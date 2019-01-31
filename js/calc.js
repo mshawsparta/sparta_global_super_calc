@@ -1,33 +1,38 @@
+var onScreen = document.getElementById("screen");
+//get number buttons and call the function numClick
 var buttonNum = document.getElementsByClassName("buttonNum");
 for (var i = 0; i < buttonNum.length; i++) {
   buttonNum[i].addEventListener("click", numClick);
 }
-
+//get AC button and call function buttonClear
 var clearScreen = document.getElementsByClassName("buttonClear");
 clearScreen[0].addEventListener("click", buttonClear);
 
-
+//get the operator symbol and call the function passOperator
 var symbol = document.getElementsByClassName("operator");
 for (var i = 0; i < symbol.length; i++) {
   symbol[i].addEventListener("click", passOperator);
 }
-var onScreen = document.getElementById("screen");
-
+//setup equals button with event listnenr and function
 var equals = document.getElementsByClassName("equals");
 equals[0].addEventListener("click", doMaths);
-var num1 = 0;
-function numClick() {
-  var data = this.innerHTML;
 
+//variable which will eventually contain the correct anwser
+var calculation = 0;
+
+
+function numClick() {
+  //get input from button
+  var data = this.innerHTML;
+  //update screen
   onScreen.innerHTML= onScreen.innerHTML + data;
-  console.log(onScreen.innerHTML);
-  num1 = onScreen;
-  return num1;
+
+  calculation = onScreen;
+  return calculation;
 
 }
 
 function buttonClear(){
-// alert("on");
   console.log(onScreen.innerHTML= "");
 }
 
@@ -37,7 +42,5 @@ function passOperator(){
 }
 
 function doMaths(){
-  onScreen.innerHTML = eval(num1.innerHTML);
+  onScreen.innerHTML = eval(calculation.innerHTML);
 }
-
-// console.log(onScreen.innerHTML);
